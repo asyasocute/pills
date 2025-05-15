@@ -1,16 +1,17 @@
 package main
 
 import (
+	"asyasocute/pills/config"
 	"log"
-	"os"
 	"time"
 
 	tele "gopkg.in/telebot.v4"
 )
 
 func main() {
+	config.Load()
 	pref := tele.Settings{
-		Token:  os.Getenv("TOKEN"),
+		Token:  config.C.BotApiToken,
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
 
